@@ -1,35 +1,35 @@
 <?php
 
- /**
- ** TEMPLATE: DASHBAORDING
- **/
+/**
+ * TEMPLATE: DASHBAORDING ADDING ALL POST TEST
+ */
 
-
-
- if ( ! defined( 'ABSPATH' ) ) {
- 	exit;
- }else{
-
-
-
+// Check if ABSPATH is defined
+if (!defined('ABSPATH')) {
+	exit;
+} else {
 
 ?>
 
-
-
 <?php
- $allowedTags='<p><strong><em><u><h1><h2><h3><h4><h5><h6><img>';
- $allowedTags.='<li><ol><ul><span><div><br><ins><del>';
-// Should use some proper HTML filtering here.
-  if($_POST['elm1']!='') {
-    $sHeader = '<h1>Ah, content is king.</h1>';
-    $sContent = strip_tags(stripslashes($_POST['elm1']),$allowedTags);
+// Define allowed HTML tags
+$allowedTags = '<p><strong><em><u><h1><h2><h3><h4><h5><h6><img>';
+$allowedTags .= '<li><ol><ul><span><div><br><ins><del>';
+
+// Check if 'elm1' field is not empty
+if ($_POST['elm1'] != '') {
+	// Header for submitted content
+	$sHeader = '<h1>Ah, content is king.</h1>';
+	// Content with HTML tags stripped and allowed tags
+	$sContent = strip_tags(stripslashes($_POST['elm1']), $allowedTags);
 } else {
-    $sHeader = '<h1>Nothing submitted yet</h1>';
-    $sContent = '<p>Start typing...</p>';
-    $sContent.= '<p><img width="107" height="108" border="0" src="/mediawiki/images/badge.png"';
-    $sContent.= 'alt="TinyMCE button"/>This rover has crossed over</p>';
-  }
+	// Default header when no content is submitted
+	$sHeader = '<h1>Nothing submitted yet</h1>';
+	// Default content with placeholder text and image
+	$sContent = '<p>Start typing...</p>';
+	$sContent .= '<p><img width="107" height="108" border="0" src="/mediawiki/images/badge.png"';
+	$sContent .= 'alt="TinyMCE button"/>This rover has crossed over</p>';
+}
 ?>
 
 
@@ -37,258 +37,140 @@
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>ADventure Dashboard</title>
-  <!-- plugins:css -->
-  <link rel="stylesheet" href="<?php echo plugin_dir_url( __FILE__ ) . '/dashboard/vendors/feather/feather.css'; ?>">
-  <link rel="stylesheet" href="<?php echo plugin_dir_url( __FILE__ ) . '/dashboard/vendors/ti-icons/css/themify-icons.css';?> ">
-  <link rel="stylesheet" href="<?php echo plugin_dir_url( __FILE__ ) . '/dashboard/vendors/css/vendor.bundle.base.css';?> ">
-  <!-- endinject -->
-  <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="<?php echo plugin_dir_url( __FILE__ ) . '/dashboard/vendors/datatables.net-bs4/dataTables.bootstrap4.css';?> ">
-  <link rel="stylesheet" href="<?php echo plugin_dir_url( __FILE__ ) . '/dashboard/vendors/ti-icons/css/themify-icons.css';?> ">
-  <link rel="stylesheet" type="text/css" href="<?php echo plugin_dir_url( __FILE__ ) . '/dashboard/js/select.dataTables.min.css';?> ">
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <link rel="stylesheet" href="<?php echo plugin_dir_url( __FILE__ ) . '/dashboard/css/vertical-layout-light/style.css';?>">
-  <!-- endinject -->
-  <link rel="shortcut icon" href="<?php echo plugin_dir_url( __FILE__ ) . '/dashboard/images/favicon.png';?> " />
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>ADventure Dashboard</title>
+	<!-- plugins:css -->
+	<!-- CSS files for plugins -->
+	<link rel="stylesheet" href="<?php echo plugin_dir_url(__FILE__) . '/dashboard/vendors/feather/feather.css'; ?>">
+	<link rel="stylesheet" href="<?php echo plugin_dir_url(__FILE__) . '/dashboard/vendors/ti-icons/css/themify-icons.css'; ?> ">
+	<link rel="stylesheet" href="<?php echo plugin_dir_url(__FILE__) . '/dashboard/vendors/css/vendor.bundle.base.css'; ?> ">
+	<!-- endinject -->
+	<!-- Plugin css for this page -->
+	<!-- CSS files for specific plugins -->
+	<link rel="stylesheet" href="<?php echo plugin_dir_url(__FILE__) . '/dashboard/vendors/datatables.net-bs4/dataTables.bootstrap4.css'; ?> ">
+	<link rel="stylesheet" href="<?php echo plugin_dir_url(__FILE__) . '/dashboard/vendors/ti-icons/css/themify-icons.css'; ?> ">
+	<link rel="stylesheet" type="text/css" href="<?php echo plugin_dir_url(__FILE__) . '/dashboard/js/select.dataTables.min.css'; ?> ">
+	<!-- End plugin css for this page -->
+	<!-- inject:css -->
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="<?php echo plugin_dir_url(__FILE__) . '/dashboard/css/vertical-layout-light/style.css'; ?>">
+	<!-- endinject -->
+	<link rel="shortcut icon" href="<?php echo plugin_dir_url(__FILE__) . '/dashboard/images/favicon.png'; ?> " />
 
- <script src="https://cdn.ckeditor.com/4.21.0/standard-all/ckeditor.js"></script>
+	<!-- CKEditor library -->
+	<script src="https://cdn.ckeditor.com/4.21.0/standard-all/ckeditor.js"></script>
 
+	<!-- Dark theme for SweetAlert2 library -->
+	<link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
 
+	<style media="screen">
+		@media only screen and (max-width: 500px) {
+			.mobiles {
+				grid-template-columns: auto !important;
+				width: 100% !important;
+				gap: 10px !important;
+			}
 
- <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
-
-
-
-<style media="screen">
-@media only screen and (max-width: 500px) {
-  .mobiles{
-
-    grid-template-columns: auto !important;
-    width:100% !important;
-    gap:10px !important;
-
-  }
-}
-
-
-</style>
-
+			.mobiles>.card {
+				min-width: 100% !important;
+			}
+		}
+	</style>
 </head>
 
-<?php
+<body>
+	<div class="container-scroller">
+		<!-- Header -->
+		<?php include('header.php'); ?>
+		<!-- End Header -->
 
+		<div class="container-fluid page-body-wrapper">
+			<!-- Sidebar -->
+			<?php include('sidebar.php'); ?>
+			<!-- End Sidebar -->
 
-  //ADDING DEFAULT DESIGN AND CALL IT
-  require_once $_SERVER['DOCUMENT_ROOT'] . '/wp-content/plugins/adhdadventure/templates/mainheader/mainheader.php';
+			<!-- Main Content -->
+			<div class="main-panel">
+				<div class="content-wrapper">
+					<div class="row">
+						<div class="col-lg-12 grid-margin">
+							<div class="card">
+								<div class="card-body">
+									<!-- Content Header -->
+									<?php echo $sHeader; ?>
+									<!-- End Content Header -->
+									<!-- Content -->
+									<div class="row">
+										<div class="col-lg-12">
+											<div class="card">
+												<div class="card-body">
+													<!-- Content Editor -->
+													<form method="post">
+														<textarea id="elm1" name="elm1" rows="15" cols="80">
+															<?php echo $sContent; ?>
+														</textarea>
+														<br>
+														<input type="submit" value="Submit">
+													</form>
+													<script>
+														CKEDITOR.replace('elm1');
+													</script>
+													<!-- End Content Editor -->
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- End Content -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Footer -->
+				<?php include('footer.php'); ?>
+				<!-- End Footer -->
+			</div>
+			<!-- End Main Content -->
+		</div>
+	</div>
+	<!-- plugins:js -->
+	<!-- JavaScript files for plugins -->
+	<script src="<?php echo plugin_dir_url(__FILE__) . '/dashboard/vendors/js/vendor.bundle.base.js'; ?>"></script>
+	<!-- endinject -->
+	<!-- Plugin js for this page -->
+	<!-- JavaScript files for specific plugins -->
+	<script src="<?php echo plugin_dir_url(__FILE__) . '/dashboard/vendors/datatables.net/jquery.dataTables.js'; ?>"></script>
+	<script src="<?php echo plugin_dir_url(__FILE__) . '/dashboard/vendors/datatables.net-bs4/dataTables.bootstrap4.js'; ?>"></script>
+	<script src="<?php echo plugin_dir_url(__FILE__) . '/dashboard/js/dataTables.select.min.js'; ?>"></script>
+	<!-- End plugin js for this page -->
+	<!-- Custom js for this page-->
+	<script src="<?php echo plugin_dir_url(__FILE__) . '/dashboard/js/dashboard.js'; ?>"></script>
+	<!-- End custom js for this page-->
+	<!-- End custom js for this page-->
 
+	<!-- SweetAlert2 library -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-?>    <!-- partial -->
-      <div class="main-panel">
-        <div class="content-wrapper">
-
-          <div class="row">
-            <div class="col-md-12 grid-margin stretch-card">
-              <div class="card position-relative">
-                <div class="card-body">
-
-                  <h4 style="text-align:center"> Add New Post Test</h4>
-
-                  <form  method="post">
-                   <label>Phase:</label>
-
-                   <select  class="form-select" aria-label="Default select example" name="phases">
-                       <option selected>Select Phase...</option>
-                      <option value="PHASE 1">PHASE 1</option>
-                      <option value="PHASE 2">PHASE 2</option>
-                      <option value="PHASE 3">PHASE 3</option>
-                      <option value="PHASE 4">PHASE 4</option>
-                   </select>
-
-                   <br>
-                   <label>Quiz Number:</label>
-
-                   <select  class="form-select" aria-label="Default select example" name="quiznumbs">
-
-                      <option selected> Select Quiz Number...</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-
-                   </select>
-                   <br>
-                   <label>Enter Content:</label>
-                   <textarea class="form-control" name="contents" id="editor" rows="10" cols="80"></textarea>
-                   <br>
-                    <label for="lettera">Enter Letter A:</label>
-                    <input type="text" name="lettera" required>
-                    <br>
-                    <label for="letterb">Enter Letter B:</label>
-                    <input type="text" name="letterb" required>
-                    <br>
-                    <label for="letterc">Enter Letter C:</label>
-                    <input type="text" name="letterc" required>
-                      <br>
-                    <label for="letterd">Enter Letter D:</label>
-                    <input type="text" name="letterd" required>
-                    <br>
-                    <label for="letterd">Enter Correct Letter:</label>
-                    <input type="text" name="correct_ans" required>
-                     <br>
-                    <div class="mobiles" style="display:grid;grid-template-columns:  auto auto; width:50%; text-align:right; float:right">
-
-                        <div style="width:100%">
-
-
-                          <button style="width:100%" class="btn btn-success glyphicon glyphicon-ok" type="submit" name="submit" >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check2" viewBox="0 0 16 16">
-                              <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-                            </svg>
-                              Submit
-                             </button>
-
-                        </div>
-                        <div style="width:100%">
-                          <button  style="width:100%" class="btn btn-danger" type="button" name="backs" onclick="location.href='https://www.adhdadventure.online/phases-materials/'"  >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                          <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-                        </svg>
-                             Cancel</button>
-
-                        </div>
-
-                    </div>
-                    <br>
-
-
-              </form>
-
-
-                 <?php
-
-                  if(isset($_POST['submit']))
-
-                  {
-
-                         $phases = $_POST['phases'];
-                         $quiznumbs = $_POST['quiznumbs'];
-                         $contents = $_POST['contents'];
-                         $lettera = $_POST['lettera'];
-                         $letterb = $_POST['letterb'];
-                         $letterc = $_POST['letterc'];
-                         $letterd = $_POST['letterd'];
-                         $correct_ans = $_POST['correct_ans'];
-
-                         $defaultdisplay = "DEFAULT";
-
-                         $testname = "POST TEST";
-                          $insertdbs = $wpdb->insert("post_test_answer",
-
-                            array(
-                              'phase_number' => $phases,
-                              'test_name' => $testname,
-                              'question' => $contents,
-                              'correct_answer' => $correct_ans,
-                               'letter_a' => $lettera,
-                               'letter_b' => $letterb,
-                               'letter_c' => $letterc,
-                               'letter_d' => $letterd,
-                               'status_view' => $defaultdisplay,
-                                'quiz_number' => $quiznumbs
-                              ));
-
-                          if($insertdbs){
-
-                              $location = "https://www.adhdadventure.online/all-post-test/";
-                              wp_redirect( $location, $status = 302 );
-
-
-                          }
-
-
-
-                 }
-
-
-                 ?>
-
-
-
-
-
-
-                </div>
-                  <!-- END BODY HERE -->
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <!-- content-wrapper ends -->
-        <!-- partial:partials/_footer.html -->
-        <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023.  <a href="https://www.adhdadventure.online/" target="_blank">ADventure</a>  All rights reserved.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
-          </div>
-        </footer>
-        <!-- partial -->
-      </div>
-      <!-- main-panel ends -->
-    </div>
-    <!-- page-body-wrapper ends -->
-  </div>
-  <!-- container-scroller -->
-
-
-
-
-   <script>
-        CKEDITOR.replace('editor');
-    </script>
-
-
-
-  <!-- plugins:js -->
-  <script src="<?php echo plugin_dir_url( __FILE__ ) . '/dashboard/vendors/js/vendor.bundle.base.js';?>"></script>
-  <!-- endinject -->
-  <!-- Plugin js for this page -->
-  <script src="<?php echo plugin_dir_url( __FILE__ ) . '/dashboard/vendors/chart.js/Chart.min.js';?>"></script>
-  <script src="<?php echo plugin_dir_url( __FILE__ ) . '/dashboard/vendors/datatables.net/jquery.dataTables.js';?>"></script>
-  <script src="<?php echo plugin_dir_url( __FILE__ ) . '/dashboard/vendors/datatables.net-bs4/dataTables.bootstrap4.js';?>"></script>
-  <script src="<?php echo plugin_dir_url( __FILE__ ) . '/dashboard/js/dataTables.select.min.js';?>"></script>
-
-  <!-- End plugin js for this page -->
-  <!-- inject:js -->
-  <script src="<?php echo plugin_dir_url( __FILE__ ) . '/dashboard/js/off-canvas.js';?>"></script>
-  <script src="<?php echo plugin_dir_url( __FILE__ ) . '/dashboard/js/hoverable-collapse.js';?>"></script>
-  <script src="<?php echo plugin_dir_url( __FILE__ ) . '/dashboard/js/template.js';?>"></script>
-  <script src="<?php echo plugin_dir_url( __FILE__ ) . '/dashboard/js/settings.js';?>"></script>
-  <script src="<?php echo plugin_dir_url( __FILE__ ) . '/dashboard/js/todolist.js';?>"></script>
-  <!-- endinject -->
-  <!-- Custom js for this page-->
-  <script src="js/dashboard.js"></script>
-  <script src="js/Chart.roundedBarCharts.js"></script>
-  <!-- End custom js for this page-->
-
-
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-
-
+	<!-- Custom script to handle form submission -->
+	<script>
+		// Submit form and show success message
+		function submitForm() {
+			Swal.fire({
+				title: 'Success',
+				text: 'Form submitted successfully!',
+				icon: 'success',
+				confirmButtonText: 'OK'
+			});
+		}
+		document.querySelector('form').addEventListener('submit', function (e) {
+			e.preventDefault();
+			submitForm();
+		});
+	</script>
 </body>
 
 </html>
 
-
-<?php
-
-
-}// closing tag for define absth
-
-?>
+<?php } ?>

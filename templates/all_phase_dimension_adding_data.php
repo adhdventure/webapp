@@ -1,82 +1,73 @@
 <?php
 
- /**
- ** TEMPLATE: DASHBAORDING
+/**
+ ** TEMPLATE: DASHBOARD ALL PHASE DIMENSION LIST
  **/
 
-
-
- if ( ! defined( 'ABSPATH' ) ) {
- 	exit;
- }else{
-
-
-
-
-?>
-
-
-
-<?php
- $allowedTags='<p><strong><em><u><h1><h2><h3><h4><h5><h6><img>';
- $allowedTags.='<li><ol><ul><span><div><br><ins><del>';
-// Should use some proper HTML filtering here.
-  if($_POST['elm1']!='') {
-    $sHeader = '<h1>Ah, content is king.</h1>';
-    $sContent = strip_tags(stripslashes($_POST['elm1']),$allowedTags);
+// Check if ABSPATH is defined
+if (!defined('ABSPATH')) {
+	exit;
 } else {
-    $sHeader = '<h1>Nothing submitted yet</h1>';
-    $sContent = '<p>Start typing...</p>';
-    $sContent.= '<p><img width="107" height="108" border="0" src="/mediawiki/images/badge.png"';
-    $sContent.= 'alt="TinyMCE button"/>This rover has crossed over</p>';
-  }
-?>
+	// Start PHP code
 
+	// Define allowed HTML tags for content
+	$allowedTags = '<p><strong><em><u><h1><h2><h3><h4><h5><h6><img>';
+	$allowedTags .= '<li><ol><ul><span><div><br><ins><del>';
+
+	// Check if the form is submitted
+	if ($_POST['elm1'] != '') {
+		// Content is submitted, sanitize and store it
+		$sHeader = '<h1>Ah, content is king.</h1>';
+		$sContent = strip_tags(stripslashes($_POST['elm1']), $allowedTags);
+	} else {
+		// No content submitted, display default values
+		$sHeader = '<h1>Nothing submitted yet</h1>';
+		$sContent = '<p>Start typing...</p>';
+		$sContent .= '<p><img width="107" height="108" border="0" src="/mediawiki/images/badge.png"';
+		$sContent .= 'alt="TinyMCE button"/>This rover has crossed over</p>';
+	}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>ADventure Dashboard</title>
-  <!-- plugins:css -->
-  <link rel="stylesheet" href="<?php echo plugin_dir_url( __FILE__ ) . '/dashboard/vendors/feather/feather.css'; ?>">
-  <link rel="stylesheet" href="<?php echo plugin_dir_url( __FILE__ ) . '/dashboard/vendors/ti-icons/css/themify-icons.css';?> ">
-  <link rel="stylesheet" href="<?php echo plugin_dir_url( __FILE__ ) . '/dashboard/vendors/css/vendor.bundle.base.css';?> ">
-  <!-- endinject -->
-  <!-- Plugin css for this page -->
-  <link rel="stylesheet" href="<?php echo plugin_dir_url( __FILE__ ) . '/dashboard/vendors/datatables.net-bs4/dataTables.bootstrap4.css';?> ">
-  <link rel="stylesheet" href="<?php echo plugin_dir_url( __FILE__ ) . '/dashboard/vendors/ti-icons/css/themify-icons.css';?> ">
-  <link rel="stylesheet" type="text/css" href="<?php echo plugin_dir_url( __FILE__ ) . '/dashboard/js/select.dataTables.min.css';?> ">
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <link rel="stylesheet" href="<?php echo plugin_dir_url( __FILE__ ) . '/dashboard/css/vertical-layout-light/style.css';?>">
-  <!-- endinject -->
-  <link rel="shortcut icon" href="<?php echo plugin_dir_url( __FILE__ ) . '/dashboard/images/favicon.png';?> " />
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>ADventure Dashboard</title>
+	<!-- plugins:css -->
+	<!-- Add CSS files -->
+	<link rel="stylesheet" href="<?php echo plugin_dir_url(__FILE__) . '/dashboard/vendors/feather/feather.css'; ?>">
+	<link rel="stylesheet" href="<?php echo plugin_dir_url(__FILE__) . '/dashboard/vendors/ti-icons/css/themify-icons.css'; ?> ">
+	<link rel="stylesheet" href="<?php echo plugin_dir_url(__FILE__) . '/dashboard/vendors/css/vendor.bundle.base.css'; ?> ">
+	<!-- endinject -->
+	<!-- Plugin css for this page -->
+	<!-- Add additional CSS files for plugins -->
+	<link rel="stylesheet" href="<?php echo plugin_dir_url(__FILE__) . '/dashboard/vendors/datatables.net-bs4/dataTables.bootstrap4.css'; ?> ">
+	<link rel="stylesheet" href="<?php echo plugin_dir_url(__FILE__) . '/dashboard/vendors/ti-icons/css/themify-icons.css'; ?> ">
+	<link rel="stylesheet" type="text/css" href="<?php echo plugin_dir_url(__FILE__) . '/dashboard/js/select.dataTables.min.css'; ?> ">
+	<!-- End plugin css for this page -->
+	<!-- inject:css -->
+	<!-- Add custom CSS -->
+	<link rel="stylesheet" href="<?php echo plugin_dir_url(__FILE__) . '/dashboard/css/vertical-layout-light/style.css'; ?>">
+	<!-- endinject -->
+	<link rel="shortcut icon" href="<?php echo plugin_dir_url(__FILE__) . '/dashboard/images/favicon.png'; ?> " />
 
- <script src="https://cdn.ckeditor.com/4.21.0/standard-all/ckeditor.js"></script>
+	<script src="https://cdn.ckeditor.com/4.21.0/standard-all/ckeditor.js"></script>
 
+	<!-- Add CSS for SweetAlert2 dark theme -->
+	<link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
 
-
- <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
-
-
-
-<style media="screen">
-@media only screen and (max-width: 500px) {
-  .mobiles{
-
-    grid-template-columns: auto !important;
-    width:100% !important;
-    gap:10px !important;
-
-  }
-}
-
-
-</style>
+	<style media="screen">
+	@media only screen and (max-width: 500px) {
+	  .mobiles{
+	    grid-template-columns: auto !important;
+	    width:100% !important;
+	    gap:10px !important;
+	  }
+	}
+	</style>
 
 </head>
 
