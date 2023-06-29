@@ -11,6 +11,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 function my_template_arrays()
 {
+
+  /**
+   * CREATE TEMPS ARRAY
+   * THIS LIST IS ALL THE PAGES TEMPLATES*
+   * THE OPEN AND CLOSE QOUTAIONS MEANS THE
+   * NAME OF THE PAGE TEMPLATE AND THE .PHP FILE
+   * IS THE PHP PAGE THAT USED */
+
   $temps = [];
 
 	$temps['adhdadventurehome.php'] = "ADHD HOMEPAGE";
@@ -25,7 +33,7 @@ function my_template_arrays()
 	$temps['dashboard.php']= "DASHBOARD FOR TEACHERS";
 	$temps['active_processing_dimen.php'] ="ACTIVE PROCESSING DIMEN";
 	$temps['new_active_create.php']= "NEW ACTIVE CREATE";
-  $temps['reflective_processing_dimen.php']= "REFLECTIVE PROCESS DIMEN";
+	$temps['reflective_processing_dimen.php']= "REFLECTIVE PROCESS DIMEN";
 	$temps['input_visual.php']= "INPUT VISUALS";
 	$temps['input_verbal.php']= "INPUT VERBALS";
 	$temps['perception_sensitive.php']= "PERCEPTION SENSITVE";
@@ -34,11 +42,11 @@ function my_template_arrays()
 	$temps['understandng_global.php']= "UNDERSTANDING GLOBAL";
 	$temps['new_reflective_add.php'] ="NEW REFLECTIVE ADD";
 	$temps['new_visual_input.php'] ="NEW VISUAL INPUT";
-  $temps['new_verbal_input.php'] ="NEW VERBAL INPUT";
-  $temps['new_perception_sensitive.php'] ="NEW PERCEPTION SENSITIVE";
-  $temps['new_perception_intuitive.php'] ="NEW PERCEPTION INTUITIVE";
-  $temps['new_understanding_sequential.php'] ="NEW UNDERSTAND SEQUENTIAL";
-  $temps['new_understanding_global.php'] ="NEW UNDERSTAND GLOBAL";
+	$temps['new_verbal_input.php'] ="NEW VERBAL INPUT";
+	$temps['new_perception_sensitive.php'] ="NEW PERCEPTION SENSITIVE";
+	$temps['new_perception_intuitive.php'] ="NEW PERCEPTION INTUITIVE";
+	$temps['new_understanding_sequential.php'] ="NEW UNDERSTAND SEQUENTIAL";
+	$temps['new_understanding_global.php'] ="NEW UNDERSTAND GLOBAL";
 	$temps['exit.php'] ="EXIT ONLY";
 	$temps['guides.php'] ="GUIDE ONLY";
 	$temps['choose_avatarp.php'] = "CHOOSE AVATAR";
@@ -56,7 +64,7 @@ function my_template_arrays()
 	$temps['settings.php'] = "ADHD SETTINGS";
 	$temps['leadershipboards.php'] ="ADHD LEADERSHIPBOARDS";
 	$temps['development_page.php'] = "ADHD DEVELOPMENT";
-  $temps['phase1_examplepage.php'] = "PHASE 1 EXAMPLE PAGE";
+ 	$temps['phase1_examplepage.php'] = "PHASE 1 EXAMPLE PAGE";
 	$temps['phase1_experimentpage.php'] = "PHASE 1 EXPERIMENT PAGE";
 	$temps['phase1_diagrampage.php'] = "PHASE 1 DIAGRAM PAGE";
 	$temps['phase1_conceptmappage.php'] = "PHASE1 CONCEPT MAP";
@@ -131,52 +139,35 @@ function my_template_arrays()
 	$temps['phase5_introduction_video.php'] ="PHASE 5 INTRO VIDEO";
 
 
-$temps['phase1_refresherpage.php'] = "PHASE 1 REFRESHER PAGE";
-$temps['phase2_refresherpage.php'] = "PHASE 2 REFRESHER PAGE";
-$temps['phase3_refresherpage.php'] = "PHASE 3 REFRESHER PAGE";
-$temps['phase4_refresherpage.php'] = "PHASE 4 REFRESHER PAGE";
-$temps['phase5_refresherpage.php'] = "PHASE 5 REFRESHER PAGE";
+	$temps['phase1_refresherpage.php'] = "PHASE 1 REFRESHER PAGE";
+	$temps['phase2_refresherpage.php'] = "PHASE 2 REFRESHER PAGE";
+	$temps['phase3_refresherpage.php'] = "PHASE 3 REFRESHER PAGE";
+	$temps['phase4_refresherpage.php'] = "PHASE 4 REFRESHER PAGE";
+	$temps['phase5_refresherpage.php'] = "PHASE 5 REFRESHER PAGE";
 
 
-$temps['all_phase_adding_post_test.php'] = "ADDING POST TEST";
-$temps['all_post_test_mainpage.php'] = "ALL POST TEST PAGE";
+	$temps['all_phase_adding_post_test.php'] = "ADDING POST TEST";
+	$temps['all_post_test_mainpage.php'] = "ALL POST TEST PAGE";
 
-$temps['phase2_postreview_correctanswer.php'] = "PHASE 2 POST TEST REVIEW";
-$temps['phase3_postreview_correctanswer.php'] = "PHASE 3 POST TEST REVIEW";
-$temps['phase4_postreview_correctanswer.php'] = "PHASE 4 POST TEST REVIEW";
-$temps['phase5_postreview_correctanswer.php'] = "PHASE 5 POST TEST REVIEW";
+	$temps['phase2_postreview_correctanswer.php'] = "PHASE 2 POST TEST REVIEW";
+	$temps['phase3_postreview_correctanswer.php'] = "PHASE 3 POST TEST REVIEW";
+	$temps['phase4_postreview_correctanswer.php'] = "PHASE 4 POST TEST REVIEW";
+	$temps['phase5_postreview_correctanswer.php'] = "PHASE 5 POST TEST REVIEW";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	/**
+	 * THIS WILL RETURN ALL THE LIST
+	 * THAT SHOWED ON THE TEMPLATE PAGE SELECTION.
+	 */
 
 	return $temps;
 }
 
+/**
+ * THIS FUNCTIONS WILL GET ALL THE SITE PAGES TEMPLATES
+ * OF THE THEMES AND POST AFTER GETTING ALL THE CURRENT
+ * LIST OF PAGE TEMPALTES ALL THE ABOVE CUSTOM TEMPLATE
+ * PAGES WILL BE ADDED ON THE LIST.
+ */
 
 function my_template_registers($page_templates, $theme, $post)
 {
@@ -189,8 +180,18 @@ function my_template_registers($page_templates, $theme, $post)
   return $page_templates;
 }
 
+/**
+ * ADDING THIS FILTER TO REGISTER ALL THE LIST
+ * OF ARRAY PAGE TEMPLATES SO THAT IT WILL
+ * BE DISPLAY ON THE RIGHT SIDE BAR OF THE PAGE
+ */
+
 add_filter('theme_page_templates','my_template_registers',10,3);
 
+/**
+ * THIS FUNCTION WILL WILL SELECT THE SPECIFIC TEMPLATE
+ *
+ */
 function my_template_selects($template)
 {
   global $post, $wp_query, $wpdb;
@@ -213,7 +214,9 @@ function my_template_selects($template)
 
 
 
-
+/**
+ * THIS WILL ADD THE TEMPLATE SELECTED
+ */
 
 add_filter('template_include','my_template_selects', 99);
 
