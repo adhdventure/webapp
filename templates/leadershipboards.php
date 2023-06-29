@@ -1,7 +1,7 @@
 <?php
 
   /**
-  ** TEMPLATE: "POPUP GUIDES";
+  ** TEMPLATE: "LEADERSHIP BOARD PAGE";
   **/
 
 ?>
@@ -165,6 +165,7 @@
             <td>
 
               <?php
+                    // DISPLAY THE FULLNAME OF THE USER
                   $gfullname = $wpdb->get_results("SELECT display_name FROM `wp_users` WHERE user_login ='$vadsfalue->student_id' ");
                   foreach ($gfullname as $key => $fvalue) {
                     echo $fvalue->display_name;

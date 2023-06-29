@@ -1,7 +1,7 @@
 <?php
 
   /**
-  ** TEMPLATE: "POPUP GUIDES";
+  ** TEMPLATE: "GUIDES PAGE PHASE 1";
   **/
 
 ?>

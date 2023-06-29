@@ -1,7 +1,7 @@
 <?php
 
  /**
- ** TEMPLATE: DASHBAORDING
+ ** TEMPLATE: NEW ACTIVE CREATE PAGE
  **/
 
 

@@ -1,7 +1,7 @@
 <?php
 
   /**
-  ** TEMPLATE: "POPUP GUIDES";
+  ** TEMPLATE: "INSTRUCTIONAL GUIDES";
   **/
 
 

@@ -1,7 +1,7 @@
 <?php
 
 /**
-** TEMPLATE: MAINPAGE
+** TEMPLATE: EXIT PAGE
 **/
 
 
